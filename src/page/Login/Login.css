@@ -1,0 +1,58 @@
+.container {
+  min-height: 95.5vh;
+  background-color: #f5f5f5;
+  background-image: url('https://www.transparenttextures.com/patterns/brushed-alum-dark.png');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.content {
+  padding: 70px 0px;
+  width: 65%;
+  height: 100%;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 18px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 8px;
+  background-color: white;
+}
+
+.containerCol {
+  margin: auto;
+}
+
+.imgDiv {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.imgSvg {
+  width: 80%;
+  margin: auto;
+  /* display: block; */
+}
+
+.colDiv .ant-input-password,
+.colDiv .ant-input-affix-wrapper,
+.colDiv .ant-btn {
+  width: 100% !important;
+}
+
+@media all and (max-width: 767px) {
+  .containerSvg {
+    display: none;
+  }
+}
+
+@media all and (max-width: 480px) {
+  .container {
+    min-height: 90vh;
+  }
+
+  .content {
+    padding: 15px;
+    width: 85%;
+  }
+
+  .containerSvg {
+    display: none;
+  }
+}

@@ -1,0 +1,29 @@
+/* */
+
+/* start of side bar */
+.ant-layout-sider-children,
+.ant-menu-item,
+.ant-menu.ant-menu-dark,
+.ant-menu-dark .ant-menu-sub,
+.ant-menu.ant-menu-dark .ant-menu-sub {
+  background-color: #1f2128 !important;
+}
+
+.ant-menu-title-content a,
+.ant-menu-item svg {
+  color: #c5c6c9 !important;
+}
+
+/* jika menu nya dipilih */
+.ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected,
+.ant-menu .ant-menu-sub {
+  background-color: #181b20 !important;
+}
+
+/* border akan muncul ketika dipilih */
+.ant-menu-vertical .ant-menu-item::after,
+.ant-menu-vertical-left .ant-menu-item::after,
+.ant-menu-vertical-right .ant-menu-item::after,
+.ant-menu-inline .ant-menu-item::after {
+  border-right: 3px solid #147ccc !important;
+}

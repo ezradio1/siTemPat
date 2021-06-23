@@ -1,0 +1,89 @@
+.menuOutline {
+  margin-left: 20px;
+}
+
+.sider-menu {
+  display: none;
+}
+
+.ant-drawer-body {
+  /* background-color: #fff; */
+  padding: 0;
+  padding-top: 15px;
+}
+
+.ant-drawer-header {
+  /* background-color: #fff; */
+  padding-bottom: 20px;
+}
+
+.ant-drawer-title {
+  padding-top: 5px;
+  color: black;
+}
+
+/* start of header */
+.ant-layout-header {
+  background-color: #fff;
+  height: 30px;
+}
+
+/* setting logo  */
+.logo {
+  height: auto;
+  justify-content: flex-end;
+  display: flex;
+  margin-top: -18px;
+}
+
+.backGround {
+  background-color: #f7f5f7;
+}
+
+.userId {
+  justify-content: center;
+  padding: 20px;
+}
+
+.userId img {
+  width: 55px;
+}
+.userId .imgProfil {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.userId p {
+  color: #f7f5f7;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 4px;
+  text-align: center;
+}
+.userId .subTitle {
+  font-size: 9px;
+  font-style: italic;
+  text-transform: none;
+}
+
+.ant-layout-sider-children {
+  width: 220px;
+}
+
+@media (min-width: 992px) {
+  .menuOutline {
+    display: none;
+    margin-left: 100px;
+  }
+
+  .sider-menu {
+    display: block;
+  }
+
+  .ant-btn-danger {
+    /* background-color: #f0f2f5; */
+    border-color: #001529;
+    border-radius: 10px;
+  }
+}

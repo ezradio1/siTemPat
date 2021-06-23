@@ -1,3 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+.myContent {
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  --antd-wave-shadow-color: orange !important;
+  --scroll-bar: 0;
+}
+
+.ant-btn-primary {
+  color: #fff;
+  background: #0f1123;
+  border-color: #0f1123;
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  color: #0f1123;
+  background: transparent;
+  border-color: #0f1123;
+}
+
+.ant-btn-dangerous {
+  color: #fff;
+  background: #a62700;
+  border-color: #a62700;
+}
+
+.ant-btn ant-btn-dangerous:hover,
+.ant-btn ant-btn-dangerous:focus {
+  color: #a62700;
+  background: transparent;
+  border-color: #a62700;
+}
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+  border-color: #3f3d56;
+  border-right-width: 1px !important;
+  z-index: 1;
+}
+
 .App {
   text-align: center;
 }
