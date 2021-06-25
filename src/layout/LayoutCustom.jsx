@@ -1,5 +1,5 @@
-import React, { useState, useContext, useEffect } from 'react';
-import myAxios from '../myAxios';
+import React, { useState, useContext, useEffect } from "react";
+import myAxios from "../myAxios";
 import {
   Layout,
   Menu,
@@ -9,15 +9,15 @@ import {
   message,
   Row,
   Col,
-} from 'antd';
-import { BrowserRouter as Router, Link } from 'react-router-dom';
+} from "antd";
+import { BrowserRouter as Router, Link } from "react-router-dom";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
   PoweroffOutlined,
   MenuOutlined,
   DownOutlined,
-} from '@ant-design/icons';
+} from "@ant-design/icons";
 import {
   PersonFill,
   PersonPlusFill,
@@ -31,16 +31,16 @@ import {
   ClipboardData,
   JournalRichtext,
   Pencil,
-} from 'react-bootstrap-icons';
+} from "react-bootstrap-icons";
 
-import { UserContext } from '../context/UserContext';
-import MenuCustom from './MenuCustom.jsx';
-import ContentCustom from './ContentCustom.jsx';
-import FooterCustom from './FooterCustom.jsx';
-import Sitempat from '../assets/logo/siTemPat.png';
-import User from '../assets/img/user.png';
+import { UserContext } from "../context/UserContext";
+import MenuCustom from "./MenuCustom.jsx";
+import ContentCustom from "./ContentCustom.jsx";
+import FooterCustom from "./FooterCustom.jsx";
+import Sitempat from "../assets/logo/siTemPat.png";
+import User from "../assets/img/user.png";
 
-import './Layout.css';
+import "./Layout.css";
 
 const { Header, Content, Sider } = Layout;
 const { SubMenu } = Menu;
@@ -65,13 +65,13 @@ const LayoutCustom = () => {
     myAxios
       .post(`logout/${user.id}`, null, {
         headers: {
-          Authorization: 'Bearer ' + user.token,
+          Authorization: "Bearer " + user.token,
         },
       })
       .then((res) => {
-        message.success('Berhasil keluar!');
+        message.success("Berhasil keluar!");
         setUser(null);
-        localStorage.removeItem('user');
+        localStorage.removeItem("user");
       })
       .catch((err) => {
         // setLoading(false);
@@ -79,10 +79,13 @@ const LayoutCustom = () => {
       });
   };
 
+  const onCollapse = (collapsed) => {
+    setCollapsed(collapsed);
+  };
   const menu = (
-    <Menu style={{ fontFamily: 'poppins' }}>
+    <Menu style={{ fontFamily: "poppins" }}>
       <Menu.Item icon={<PoweroffOutlined />}>
-        <a target='_blank' rel='noopener noreferrer' onClick={Logout}>
+        <a target="_blank" rel="noopener noreferrer" onClick={Logout}>
           Keluar
         </a>
       </Menu.Item>
@@ -290,77 +293,91 @@ const LayoutCustom = () => {
   return (
     <Router>
       <Layout>
-        {user && (
-          <Header theme='light' className='site-layout-background'>
-            <div className='hamburger-menu'>
+        {/* {user && (
+          <Header theme="light" className="site-layout-background">
+            <div className="hamburger-menu">
               <Button
-                className='menuOutline'
+                className="menuOutline"
                 style={{
-                  backgroundColor: 'transparent',
-                  borderRadius: '10px',
-                  borderColor: 'transparent',
+                  backgroundColor: "transparent",
+                  borderRadius: "10px",
+                  borderColor: "transparent",
                 }}
-                icon={<MenuOutlined style={{ color: 'white' }} />}
-                onClick={() => setVisible(true)}></Button>
+                icon={<MenuOutlined style={{ color: "white" }} />}
+                onClick={() => setVisible(true)}
+              ></Button>
             </div>
 
             <div>
-              <Row justify='end' style={{ marginTop: '-64px' }}>
+              <Row justify="end" style={{ marginTop: "-64px" }}>
                 <Col>
                   <img
-                    style={{ width: '45px', paddingRight: '10px' }}
+                    style={{ width: "45px", paddingRight: "10px" }}
                     src={Sitempat}
                   />
                 </Col>
-                <Col style={{ marginTop: '0' }}>
+                <Col style={{ marginTop: "0" }}>
                   <Dropdown
                     overlay={menu}
-                    trigger={['click']}
-                    placement='bottomCenter'>
+                    trigger={["click"]}
+                    placement="bottomCenter"
+                  >
                     <a
-                      style={{ paddingRight: '30px', color: 'white' }}
-                      className='ant-dropdown-link'
-                      onClick={(e) => e.preventDefault()}>
+                      style={{ paddingRight: "30px", color: "white" }}
+                      className="ant-dropdown-link"
+                      onClick={(e) => e.preventDefault()}
+                    >
                       NAMA ORANG <DownOutlined />
                     </a>
                   </Dropdown>
                 </Col>
               </Row>
             </div>
-            <div className='logo'>
-              <Link to='/'>
+            <div className="logo">
+              <Link to="/">
                 <p>(+62) 856 4526 78945</p>
               </Link>
             </div>
           </Header>
-        )}
-        <Layout className='site-layout'>
+        )} */}
+        <Layout className="site-layout">
           {user && (
-            <div className='side-bar'>
-              <Sider
-                onCollapse={toggle}
-                theme='dark'
-                className='sider-menu'
-                trigger={null}
-                collapsible
-                collapsed={collapsed}
-                style={{
-                  height: '100%',
-                }}>
-                <div className='userId'>
-                  <div className='imgProfil'>
-                    <img src={User} />
-                  </div>
+            <Sider
+              collapsible
+              onCollapse={onCollapse}
+              theme="dark"
+              className="sider-menu"
+              collapsed={collapsed}
+              width="230px"
+            >
+              <div className="userId">
+                <div className="imgProfil">
+                  <img src={User} />
+                </div>
+                <div>
+                  <p
+                    style={{
+                      lineHeight: collapsed ? "16px" : "0px",
+                      fontSize: collapsed ? "12px" : "15px",
+                    }}
+                  >
+                    {user.nama}
+                  </p>
                   <div>
-                    <p>{user.nama}</p>
-                    <div>
-                      <p className='subTitle'>{user.role}</p>
-                    </div>
+                    <p
+                      style={{
+                        lineHeight: collapsed ? "16px" : "4px",
+                        fontSize: collapsed ? "10px" : "12px",
+                      }}
+                      className="subTitle"
+                    >
+                      {user.role}
+                    </p>
                   </div>
                 </div>
-                <MenuCustom />
-              </Sider>
-            </div>
+              </div>
+              <MenuCustom />
+            </Sider>
           )}
 
           {/* {user && (
@@ -376,7 +393,7 @@ const LayoutCustom = () => {
               {menuDrawer}
             </Drawer>
           )} */}
-          <Content className='backGround' style={{ minHeight: '87vh' }}>
+          <Content className="backGround" style={{ minHeight: "87vh" }}>
             <ContentCustom />
           </Content>
         </Layout>

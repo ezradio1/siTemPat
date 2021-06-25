@@ -56,20 +56,44 @@
 
 .userId p {
   color: #f7f5f7;
-  font-size: 12px;
+  /* font-size: 12px; */
   text-transform: uppercase;
-  line-height: 4px;
   text-align: center;
 }
 .userId .subTitle {
-  font-size: 9px;
+  /* font-size: 11px; */
   font-style: italic;
   text-transform: none;
 }
 
-.ant-layout-sider-children {
-  width: 220px;
+/* .ant-layout-sider-children,
+.side-bar,
+.ant-layout-sider-trigger,
+.ant-layout-sider {
+  width: 220px !important;
+} */
+
+.ant-layout-content {
+  min-height: 97vh !important;
 }
+
+.container-table {
+  background-color: aquamarine;
+  padding: 10px;
+}
+
+.ant-layout-sider-trigger {
+  background-color: #1f2228;
+}
+
+.ant-layout-sider-has-trigger {
+  padding-bottom: 0;
+}
+/* @media (max-width: 991px) {
+  .side-bar {
+    width: 0px !important;
+  }
+} */
 
 @media (min-width: 992px) {
   .menuOutline {

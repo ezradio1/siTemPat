@@ -1,25 +1,37 @@
-import React, { useContext, useState } from 'react';
-import myAxios from '../../myAxios';
+import React, { useContext, useState } from "react";
+import myAxios from "../../myAxios";
 
-import { Form, Input, Button, Row, Col, message } from 'antd';
-import { UserContext } from '../../context/UserContext';
-import { Link, useHistory } from 'react-router-dom';
-import { UserOutlined, KeyOutlined } from '@ant-design/icons';
-import './Login.css';
+import { Form, Input, Button, Row, Col, message } from "antd";
+import { UserContext } from "../../context/UserContext";
+import { Link, useHistory } from "react-router-dom";
+import { UserOutlined, KeyOutlined } from "@ant-design/icons";
+import "./Login.css";
 // import LogoNav from '../../assets/logo/logo-ikdki.png';
-import LogoNav from '../../assets/logo/siTemPat.png';
-import SvgLogin from '../../assets/img/login.svg';
-import { At, Key } from 'react-bootstrap-icons';
-import { motion } from 'framer-motion';
+import LogoNav from "../../assets/logo/siTemPat.png";
+import SvgLogin from "../../assets/img/login.svg";
+import { At, Key } from "react-bootstrap-icons";
+import { motion } from "framer-motion";
+import { Snackbar } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
 
 const layout = {
   labelCol: { span: 8 },
   wrapperCol: { span: 16 },
 };
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    "& > *": {
+      margin: theme.spacing(1),
+      width: "25ch",
+    },
+  },
+}));
+
 const Login = () => {
   const [, setUser] = useContext(UserContext);
   const [loading, setLoading] = useState(false);
+  const [SnackbarVis, setSnack] = useState(false);
   const [form] = Form.useForm();
   let history = useHistory();
 
@@ -31,7 +43,7 @@ const Login = () => {
     };
 
     myAxios
-      .post('login', inputData)
+      .post("login", inputData)
       .then((res) => {
         var data = res.data.user;
 
@@ -48,11 +60,11 @@ const Login = () => {
           role,
           id,
         };
-
+        setSnack(true);
         setUser(currentUser);
-        localStorage.setItem('user', JSON.stringify(currentUser));
+        localStorage.setItem("user", JSON.stringify(currentUser));
         setLoading(false);
-        message.success('Selamat Datang, ' + nama + '!');
+        message.success("Selamat Datang, " + nama + "!");
       })
       .catch((err) => {
         setLoading(false);
@@ -61,88 +73,100 @@ const Login = () => {
   };
 
   const onFinishFailed = (errorInfo) => {};
-
+  const classes = useStyles();
   return (
-    <div className='container'>
+    <div className="container">
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className='content'>
-        <Row justify='center' className='containerRow'>
-          <Col md={12} className='containerCol containerSvg'>
+        className="content"
+      >
+        <Row justify="center" className="containerRow">
+          <Col md={12} className="containerCol containerSvg">
             <motion.div
               initial={{ opacity: 0, x: -100 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1, delay: 1 }}
-              className='imgDiv'>
-              <img className='imgSvg' src={SvgLogin}></img>
+              className="imgDiv"
+            >
+              <img className="imgSvg" src={SvgLogin}></img>
             </motion.div>
           </Col>
-          <Col md={12} sm={24} className='containerCol'>
-            <div className='colDiv'>
+          <Col md={12} sm={24} className="containerCol">
+            <div className="colDiv">
               <motion.div
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1, delay: 1 }}
                 style={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}>
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
                 <br />
                 <img
-                  alt='logo-sitempat.png'
-                  style={{ width: '100px', marginBottom: '20px' }}
+                  alt="logo-sitempat.png"
+                  style={{ width: "100px", marginBottom: "20px" }}
                   src={LogoNav}
                 />
               </motion.div>
               <motion.div
                 initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 1, delay: 1 }}>
+                transition={{ duration: 1, delay: 1 }}
+              >
                 <Form
                   {...layout}
                   form={form}
-                  name='basic'
+                  name="basic"
                   initialValues={{ remember: false }}
                   onFinish={onFinish}
-                  onFinishFailed={onFinishFailed}>
+                  onFinishFailed={onFinishFailed}
+                >
                   <Form.Item
-                    justify='center'
-                    name='email'
+                    justify="center"
+                    name="email"
                     rules={[
                       {
                         required: true,
-                        message: 'Masukan email yang valid!',
-                        type: 'email',
+                        message: "Masukan email yang valid!",
+                        type: "email",
                       },
-                    ]}>
+                    ]}
+                  >
                     <Input
-                      size='middle'
+                      size="middle"
                       prefix={<At />}
-                      placeholder='  arez@sitempat.com'
+                      placeholder="  arez@sitempat.com"
                     />
                   </Form.Item>
                   <Form.Item
-                    justify='center'
-                    name='password'
+                    justify="center"
+                    name="password"
                     rules={[
                       {
                         required: true,
-                        message: 'Kata sandi minimal 6 karakter!',
+                        message: "Kata sandi minimal 6 karakter!",
                         min: 6,
                       },
-                    ]}>
+                    ]}
+                  >
                     <Input.Password
-                      size='middle'
+                      size="middle"
                       prefix={<Key />}
-                      placeholder='  Kata sandi'
+                      placeholder="  Kata sandi"
                     />
                   </Form.Item>
 
-                  <Form.Item justify='center'>
-                    <Button type='primary' htmlType='submit' loading={loading}>
+                  <Form.Item justify="center">
+                    <Button
+                      style={{ marginTop: "20px" }}
+                      type="primary"
+                      htmlType="submit"
+                      loading={loading}
+                    >
                       Masuk
                     </Button>
                   </Form.Item>
@@ -152,6 +176,11 @@ const Login = () => {
           </Col>
         </Row>
       </motion.div>
+      <Snackbar
+        open={SnackbarVis}
+        TransitionComponent="Fade"
+        message="Selamat datang"
+      />
     </div>
   );
 };
