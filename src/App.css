@@ -1,11 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-.myContent {
-  font-family: 'Poppins', sans-serif;
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+.myContent,
+.ant-modal-content {
+  font-family: "Poppins", sans-serif !important;
+}
+.ant-modal-body {
+  padding-bottom: 0;
 }
 
 html {
   --antd-wave-shadow-color: orange !important;
   --scroll-bar: 0;
+}
+
+.ant-btn-secondary {
+  color: #fff;
+  background: #3b976a;
+  border-color: #3b976a;
+}
+
+.ant-btn-secondary:hover,
+.ant-btn-secondary:focus {
+  color: #3b976a;
+  background: transparent;
+  border-color: #3b976a;
 }
 
 .ant-btn-primary {
@@ -21,14 +38,15 @@ html {
   border-color: #0f1123;
 }
 
-.ant-btn-dangerous {
+.ant-btn-danger {
   color: #fff;
   background: #a62700;
   border-color: #a62700;
+  border-radius: 0;
 }
 
-.ant-btn ant-btn-dangerous:hover,
-.ant-btn ant-btn-dangerous:focus {
+.ant-btn-danger:hover,
+.ant-btn-danger:focus {
   color: #a62700;
   background: transparent;
   border-color: #a62700;
@@ -40,6 +58,24 @@ html {
   z-index: 1;
 }
 
+.ant-pagination-item {
+  border-color: #0f1123;
+}
+
+.ant-pagination-item-active a {
+  color: #0f1123;
+}
+
+.ant-table-column-title,
+th .ant-table-cell {
+  font-weight: bold;
+}
+
+.ant-input:hover,
+.ant-input:focus {
+  border-color: #0f1123;
+}
+
 .App {
   text-align: center;
 }
@@ -49,6 +85,50 @@ html {
   pointer-events: none;
 }
 
+.aksiTabel .ant-col {
+  padding-right: 10px;
+}
+
+.aksiEdit,
+.aksiEdit:focus {
+  color: #0286ca;
+  border-color: #0286ca;
+}
+.aksiEdit:hover {
+  background-color: #0286ca;
+  color: white;
+}
+
+.aksiHapus,
+.aksiHapus:focus {
+  color: #a62700;
+  border-color: #a62700;
+}
+.aksiHapus:hover {
+  color: white;
+  background-color: #a62700;
+  border-color: #a62700;
+}
+
+.container-content {
+  padding: 50px;
+}
+
+.container-table {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.table-title {
+  font-size: xx-large;
+}
+
+@media all and (max-width: 480px) {
+  .container-content {
+    padding: 5px;
+  }
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
